@@ -57,4 +57,4 @@ int number1 = number3 / 100;
 
 int secondDigit = number2 - number1 * 10;
 
-System.Console.WriteLine($"Вторая цифра введеного числа: {Math.Abs(secondDigit)}");
+System.Console.WriteLine($"Вторая цифра введенного числа: {Math.Abs(secondDigit)}");
