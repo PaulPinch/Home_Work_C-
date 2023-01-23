@@ -19,7 +19,7 @@ int GetNumber(string message)
         }
         else
         {
-            Console.WriteLine("Ввели не число (x, y). Повторите ввод!");
+            Console.WriteLine("Ввели не число (x, y, z). Повторите ввод!");
         }
     }
 

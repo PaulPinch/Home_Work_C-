@@ -13,27 +13,27 @@ int GetNumber(string message)
     while(true)
     {
         Console.WriteLine(message);
-        if(int.TryParse(Console.ReadLine(), out result) && result > 0)
+        if(int.TryParse(Console.ReadLine(), out result))
         {
-            string temp = Convert.ToString(result);
+            string temp = Convert.ToString(Math.Abs(result));
             if (temp.Length == 5)
             {
                 break;    
             }
             else
             {
-                Console.WriteLine("Ввели не 5-значное положительное число");    
+                Console.WriteLine("Ввели не 5-значное число");    
             }
         }
         else
         {
-            Console.WriteLine("Ввели не 5-значное положительное число");
+            Console.WriteLine("Ввели не 5-значное число");
         }
     }
     return result;
 }
-int number = GetNumber("Введите 5-значное положительное число:");
-string forward = Convert.ToString(number);
+int number = GetNumber("Введите 5-значное число:");
+string forward = Convert.ToString(Math.Abs(number));
 string reversed = new string(forward.ToCharArray().Reverse().ToArray());
 if (forward == reversed)
 {
@@ -48,18 +48,22 @@ else
 Решение задачи на VBA для Excel:
 Sub Sem3Task19()
  'Задача 19. Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
-    Dim Asker As String, m
+    Dim Asker As String, m, Numb As Double
 Start:
-    Asker = InputBox("Enter a positive 5-digit number:")
+    Asker = InputBox("Enter a 5-digit number:")
     If Not IsNumeric(Asker) Or InStr(1, Asker, ",") > 0 Then
         If Asker = "" Then Exit Sub
         m = MsgBox("You entered a string! Please, correct!", vbCritical)
         GoTo Start
-    ElseIf Len(Asker) <> 5 Or InStr(1, Asker, "-") > 0 Then
-        m = MsgBox("The number must be a 5-digit positive number! Please, correct!", vbCritical)
+    ElseIf Len(Asker) = 6 And Mid(Asker, 1, 1) = "-" Then
+        Numb = Abs(Val(Asker))
+    ElseIf Len(Asker) <> 5 Then
+        m = MsgBox("The number must be a 5-digit number! Please, correct!", vbCritical)
         GoTo Start
+    Else
+        Numb = Abs(Val(Asker))
     End If
-    If Asker = StrReverse(Asker) Then
+    If Format(Numb) = StrReverse(Format(Numb)) Then
         m = MsgBox("Congratulations! The number you entered IS a palindrome!", vbInformation)
     Else
         m = MsgBox("Sorry! The number you entered is NOT a palindrome!", vbExclamation)
